@@ -23,7 +23,7 @@ CREATE TABLE `Livro` (
     `Id` INTEGER NOT NULL,
     `Ano` DATE NOT NULL,
     `Autor` VARCHAR NOT NULL,
-    `item_ID` INTEGER NOT NULL,
+    `item_id` INTEGER NOT NULL,
     PRIMARY KEY (`Id`)
 );
 
@@ -31,14 +31,14 @@ CREATE TABLE `CD` (
     `id` INTEGER NOT NULL,
     `Produtora` VARCHAR NOT NULL,
     `Ano` DATE NOT NULL,
-    `item_Id` INTEGER NOT NULL,
+    `item_id` INTEGER NOT NULL,
     PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `Musica` (
     `Id` INTEGER NOT NULL,
     `Nome` VARCHAR NOT NULL,
-    `CD_Id` INTEGER NOT NULL,
+    `CD_id` INTEGER NOT NULL,
     PRIMARY KEY (`Id`)
 );
 
@@ -47,6 +47,7 @@ CREATE TABLE `DVD` (
     `Produtora` VARCHAR NOT NULL,
     `Ano` DATE NOT NULL,
     `Diretores` VARCHAR NOT NULL,
+    `item_id` INTEGER NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -94,4 +95,7 @@ CREATE TABLE `Telefone` (
     PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `Musica` ADD FOREIGN KEY (`CD_Id`) REFERENCES `CD`(`id`);
+ALTER TABLE `Livro` ADD FOREIGN KEY (`item_id`) REFERENCES `Item`(`Id`);
+ALTER TABLE `CD` ADD FOREIGN KEY (`item_id`) REFERENCES `Item`(`Id`);
+ALTER TABLE `Musica` ADD FOREIGN KEY (`CD_id`) REFERENCES `CD`(`id`);
+ALTER TABLE `DVD` ADD FOREIGN KEY (`item_id`) REFERENCES `Item`(`Id`);
